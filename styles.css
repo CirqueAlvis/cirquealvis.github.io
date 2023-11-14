@@ -57,11 +57,16 @@ header{
 
 .video-container{
     transform: translateZ(-10px) scale(2);
-    width: 100vw;
 }
 
 .video-container, iframe{
     position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+iframe{
+    width: 200vw;
 }
 
 .title{
