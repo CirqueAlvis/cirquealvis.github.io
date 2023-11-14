@@ -79,6 +79,5 @@ section{
     font-size: 2rem;
     padding: 2rem;
     background-color: rgba(16,16,16,0.83);
-    backdrop-filter: blur(16px) brightness(200%);
     color: white;
 }
