@@ -1,0 +1,96 @@
+body{
+    font-family: "Cairo";
+    margin: 0;
+    padding: 0;
+}
+
+.navbar{
+    z-index: 8;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: animateBg 10s linear infinite;
+    background-image: linear-gradient(white -25%,#ffee8e 150%);
+    color: #323232;
+}
+
+.navbar-links ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    color: #323232;
+    padding: 1rem;
+    display: block;
+    text-align: center;
+}
+
+.navbar-links li:hover{
+    background-image: linear-gradient(#ffee8e -25%, white 150%);
+}
+
+.background{
+    position: absolute;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+.latest-videoembed{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper{
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective: 10px;
+}
+
+header{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transform-style: preserve-3d;
+    z-index: -1;
+}
+
+.background{
+    transform: translateZ(-5px) scale(1.5);
+}
+
+.title{
+    font-size: 7rem;
+    color: white;
+    text-shadow: 1px 1px 5px black;
+}
+
+section{
+    font-size: 1.5rem;
+    padding: 4rem;
+    background-color: #161616;
+    color: white;
+}
+
+.background{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
