@@ -75,6 +75,7 @@ header{
 section{
     font-size: 2rem;
     padding: 2rem;
-    background-color: #323232;
+    background-color: rgba(16,16,16,0.83);
+    backdrop-filter: blur(16px);
     color: white;
 }
