@@ -80,7 +80,7 @@ header{
 section{
     font-size: 2rem;
     padding: 2rem;
-    margin-top: 25vh;
+    margin-top: -25vh;
     background-color: rgba(16,16,16,0.83);
     color: white;
 }
