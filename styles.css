@@ -69,6 +69,8 @@ header{
     font-size: 6.5rem;
     font-weight: bolder;
     color: white;
+    background-color: rgba(16,16,16,0.83);
+    backdrop-filter: blur(16px) brightness(200%);
     text-shadow: 1px 1px 5px black;
 }
 
