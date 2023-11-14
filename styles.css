@@ -60,10 +60,6 @@ header{
     width: 100vw;
 }
 
-iframe{
-    width: 200vw;
-}
-
 .video-container, iframe{
     position: absolute;
 }
