@@ -87,3 +87,10 @@ section{
     background-color: rgba(16,16,16,0.83);
     color: white;
 }
+
+
+@media screen and (max-width: 600px){
+    .title{
+        font-size: 3.5rem;
+    }
+}
