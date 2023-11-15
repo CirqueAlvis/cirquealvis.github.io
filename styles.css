@@ -1,6 +1,7 @@
 body{
-    font-family: "Cairo";
-    background-color: black;
+    font-family: 'Cairo', sans-serif;
+    background-color: #161616;
+    overflow-x: hidden;
     overflow-y: auto;
     margin: 0;
     padding: 0;
@@ -40,6 +41,40 @@ body{
     background-image: linear-gradient(#ffee8e -25%, white 150%);
 }
 
+section{
+    font-size: 1rem;
+    padding: 2rem;
+    margin-top: -25vh;
+    background-color: rgba(16,16,16,0.83);
+    backdrop-filter: blur(16px) brightness(200%);
+    -webkit-backdrop-filter: blur(16px) brightness(200%);
+    color: white;
+}
+
+.web-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 50vh;
+}
+
+#twitch-embed{
+    width: 100%;
+    height: 0%;
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 56.25%;
+}
+
+#twitch-embed iframe{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
 .wrapper{
     height: 100vh;
     overflow-y: auto;
@@ -68,6 +103,13 @@ header{
     pointer-events: none;
 }
 
+.twitch-container{
+    width: 50vw;
+    height: 50vh;
+    margin-top: -18vh;
+    transform: translateZ(-5px) scale(1.5px);
+}
+
 .title{
     font-size: 6.5rem;
     margin-top: 25vh;
@@ -76,22 +118,23 @@ header{
     margin-bottom: auto;
     font-weight: bolder;
     color: white;
-    background-color: rgba(16,16,16,0.83);
     text-shadow: 1px 1px 5px black;
     transform: translateZ(-5px) scale(1.5);
 }
 
-section{
-    font-size: 2rem;
-    padding: 2rem;
-    margin-top: -25vh;
-    background-color: rgba(16,16,16,0.83);
-    color: white;
-}
-
-
-@media screen and (max-width: 600px){
+@media screen and (max-width: 800px){
     .title{
-        font-size: 3.5rem;
+        font-size: 4.5rem;
+        margin-top: 10vh;
+    }
+
+    section{
+        margin-top: -50vh;
+    }
+
+    .twitch-container{
+        margin-top: -5vh;
+        width: 75vw;
+        height: 75vh;
     }
 }
