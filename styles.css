@@ -1,6 +1,7 @@
 body{
     font-family: "Cairo";
     background-color: black;
+    overflow-y: auto;
     margin: 0;
     padding: 0;
 }
