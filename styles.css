@@ -47,7 +47,7 @@ section{
     margin-top: -25vh;
     background-color: rgba(16,16,16,0.83);
     backdrop-filter: blur(16px) brightness(200%);
-    -webkit-backdrop-filter: blur(16px) brightness(200%);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
     color: white;
 }
 
