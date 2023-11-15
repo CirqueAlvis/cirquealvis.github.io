@@ -72,11 +72,10 @@ header{
     margin-top: 25vh;
     margin-left: auto;
     margin-right: auto;
-    maring-bottom: auto;
+    margin-bottom: auto;
     font-weight: bolder;
     color: white;
     background-color: rgba(16,16,16,0.83);
-    backdrop-filter: blur(16px) brightness(200%);
     text-shadow: 1px 1px 5px black;
     transform: translateZ(-5px) scale(1.5);
 }
