@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- HTML Meta Tags -->
+        <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+        <title>Cirque Alvis – Twitch</title>
+        <meta name="description" content="Hello hello. This site is still a work-in-progress. Take a look if you want to.">
+        
+        <!-- Facebook Meta Tags -->
+        <meta property="og:url" content="https://cirquealvis.github.io">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Cirque Alvis">
+        <meta property="og:description" content="Hello hello. This site is still a work-in-progress. Take a look if you want to.">
+        <meta property="og:image" content="https://cirquealvis.github.io/images/cirquealvis-banner.png">
+        
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:domain" content="cirquealvis.github.io">
+        <meta property="twitter:url" content="https://cirquealvis.github.io">
+        <meta name="twitter:title" content="Cirque Alvis">
+        <meta name="twitter:description" content="Hello hello. This site is still a work-in-progress. Take a look if you want to.">
+        <meta name="twitter:image" content="https://cirquealvis.github.io/images/cirquealvis-banner.png">        
+
+        <!-- Phone Layout -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- General HTML Stuff -->
+        <link rel="icon" type="image/x-icon" href="https://cirquealvis.github.io/images/favicon.ico">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura">
+        <link rel="stylesheet" href="styles.css">
+        <style type="text/css">
+            body{
+                background-color: #6441a5;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="twitch.html">Twitch</a></li>
+                    <li><a href="socials.html">Socials</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <header>
+            <div class="twitch-container">
+                <div id="twitch-embed"></div>
+                <script src="https://embed.twitch.tv/embed/v1.js"></script>
+                <script type="text/javascript">
+                    new Twitch.Embed("twitch-embed", {
+                    channel: "cirquealvis",
+                    });
+                </script>
+            </div>
+        </header>
+
+        <section class="page-body-container">
+            <ul class="page-body">
+                <div>This is where you can see if I'm streaming or not.</div>
+            </ul>
+
+            <footer class="footer-container">
+                <ul>
+                    <li><a href="https://www.twitch.tv/cirquealvis">Twitch</a></li>
+                </ul>
+            </footer>
+        </section>
+    </body>
+</html>
