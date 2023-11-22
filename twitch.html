@@ -38,8 +38,6 @@
         </style>
     </head>
     <body>
-
-    <div class="wrapper">
         <nav class="navbar">
             <div class="navbar-links">
                 <ul>
@@ -51,24 +49,27 @@
         </nav>
 
         <header>
-            <div class="title">
-                <div class="twitch-container">
-                    <div id="twitch-embed"></div>
-                    <script src="https://embed.twitch.tv/embed/v1.js"></script>
-                    <script type="text/javascript">
-                        new Twitch.Embed("twitch-embed", {
-                        channel: "cirquealvis",
-                        });
-                    </script>
-                </div>
+            <div class="twitch-container">
+                <div id="twitch-embed"></div>
+                <script src="https://embed.twitch.tv/embed/v1.js"></script>
+                <script type="text/javascript">
+                    new Twitch.Embed("twitch-embed", {
+                    channel: "cirquealvis",
+                    });
+                </script>
             </div>
         </header>
 
-        <section>
-            <ul class="web-body">
+        <section class="page-body-container">
+            <ul class="page-body">
                 <div>This is where you can see if I'm streaming or not.</div>
             </ul>
+
+            <footer class="footer-container">
+                <ul>
+                    <li><a href="https://www.twitch.tv/cirquealvis">Twitch</a></li>
+                </ul>
+            </footer>
         </section>
-    </div>
     </body>
 </html>
