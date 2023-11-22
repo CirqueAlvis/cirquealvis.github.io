@@ -1,27 +1,74 @@
-html{
-    height: -webkit-fill-available;
-}
-
 body{
-    height: -webkit-fill-available;
+    color: #ececec;
+    display: flex;
+    flex-direction: column;
     font-family: 'Cairo', sans-serif;
-    background-color: #161616;
-    overflow-x: hidden;
-    overflow-y: auto;
+    background-color: #1a0800;
     margin: 0;
     padding: 0;
 }
 
+.header-container{
+    margin-top: 14vh;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    font-size: 6rem;
+    text-align: center;
+}
+
+.page-body-container{
+    color: #ececec;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(16, 16, 16, 0.75);
+}
+
+.page-body{
+    padding: 32px;
+}
+
+.page-body li {
+    color: #ffed91;
+}
+
+#twitch-embed iframe{
+    width: 100%;
+    height: 100%;
+}
+
+.twitch-container{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#twitch-embed{
+    width: 50%;
+    height: 50vh;
+    margin-top: 7vh;
+    margin-bottom: 7vh;
+    position: relative;
+    justify-content: center;
+}
+
 .navbar{
-    z-index: 8;
-    position: sticky;
+    background: linear-gradient(0deg, rgba(50,50,50,0.50) 6%, rgba(255,237,145,1.0) 150%);
+    backdrop-filter: blur(16px) saturate(125%) brightness(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(125%) brightness(150%);
     top: 0;
+    position: sticky;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: animateBg 10s linear infinite;
-    background-image: linear-gradient(white -25%,#ffee8e 150%);
-    color: #323232;
+    z-index: 6;
 }
 
 .navbar-links ul {
@@ -36,95 +83,41 @@ body{
 
 .navbar-links li a {
     text-decoration: none;
-    color: #323232;
+    color: #ececec;
     padding: 1rem;
     display: block;
     text-align: center;
 }
 
 .navbar-links li:hover{
-    background-image: linear-gradient(#ffee8e -25%, white 150%);
+    background: linear-gradient(0deg, rgba(255,237,145,0.5) -7%, rgba(50,50,50,0.0) 75%);
 }
 
-section{
-    font-size: 1rem;
-    padding: 2rem;
-    margin-top: -25vh;
-    background-color: rgba(16,16,16,0.83);
-    backdrop-filter: saturate(180%) blur(16px);
-    -webkit-backdrop-filter: saturate(180%) blur(16px);
-    color: white;
-}
-
-.web-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 50vh;
-}
-
-#twitch-embed{
-    width: 100%;
-    height: 0%;
-    position: relative;
-    overflow: hidden;
-    padding: 0 0 56.25%;
-}
-
-#twitch-embed iframe{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-}
-
-.wrapper{
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    perspective: 10px;
-}
-
-header{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    transform-style: preserve-3d;
-    z-index: -1;
-}
-
-.video-container{
-    transform: translateZ(-10px) scale(2);
-}
-
-.video-container, iframe{
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-}
-
-.twitch-container{
-    width: 50vw;
-    height: 50vh;
-    margin-top: -18vh;
-    transform: translateZ(-5px) scale(1.5px);
-}
-
-.title{
-    font-size: 6.5rem;
+.footer-container{
+    color: #ffed91;
     margin-top: 25vh;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
-    font-weight: bolder;
-    color: white;
-    text-shadow: 1px 1px 5px black;
-    transform: translateZ(-5px) scale(1.5);
+    margin-bottom: 10vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+a{
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    text-decoration: none;
 }
 
 @media screen and (max-width: 800px){
@@ -133,13 +126,19 @@ header{
         margin-top: 10vh;
     }
 
-    section{
-        margin-top: -50vh;
+    .page-body{
+        margin-bottom: 8vh;
     }
 
-    .twitch-container{
-        margin-top: -5vh;
-        width: 75vw;
-        height: 75vh;
+    #twitch-embed{
+        width: 75%;
+    }
+
+    .navbar{
+        position: fixed;
+        overflow: hidden;
+        top: auto;
+        bottom: 0;
+        width: 100%;
     }
 }
