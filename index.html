@@ -7,12 +7,18 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-        <title>CQAS – Home</title>
+        <title id="webTitle">CQAS – Home</title>
         <style>
+            :root {
+                --buttonContainerWidthWide: 100%;
+                --buttonContainerHeightWide: 80px;
+                --buttonContainerWidthPor: 150px;
+                --buttonContainerHeightPor: 84px;
+            }
+
             * {
                 padding: 0;
                 margin: 0;
-                
             }
 
             body {
@@ -40,6 +46,14 @@
                 -moz-user-select: none;
                 -ms-user-select: none;
                 user-select: none;
+            }
+
+            #backgroundVideo {
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                min-width: 100%;
+                min-height: 100%;
             }
 
             .foreground {
@@ -75,24 +89,73 @@
                 text-shadow: 2px 2px 10px rgb(255, 255, 255, 0.64), -2px -2px 10px rgba(26, 26, 26, 0.64);
             }
 
+            section {
+                display: none;
+                width: 25%;
+                margin-left: 4%;
+                margin-right: 18%;
+
+                opacity: 0;
+                transition: opacity 0.08s ease;
+            }
+
+            section.show {
+                display: flex;
+                opacity: 1;
+            }
+
+            .sectionHome {
+                width: 25%;
+                height: 75vh;
+                margin-right: 18%;
+            }
+
             .navigation {
+                margin-top: 18vh;
                 position: relative;
-                margin-top: 64px;
-                margin-bottom: 64px;
-                margin-left: 16px;
-                margin-right: 256px;
                 display: inherit;
                 flex-direction: column;
                 list-style-type: none;
-                width: 32%;
+                width: 100%;
+                height: 100%;
                 font-weight: 600;
+            }
+
+            .buttonContainer {
+                width: var(--buttonContainerWidthWide);
+                height: var(--buttonContainerHeightWide);
+                margin-bottom: 16px;
+            }
+
+            .sectionMods {
+                width: 75%;
+                margin: 8%;
+                margin-right: 32%;
+            }
+
+            .modListContainer {
+                width:50vw;
+                height:75vh;
+            }
+
+            .scrollBoxHori {
+                display: flex;
+                flex-direction: row;
+                border:1px solid #ccc;
+                background-color:#ccc;
+                overflow:auto;
+            }
+
+            .scrollBoxVert {
+                border:1px solid #ccc;
+                background-color:#ccc;
+                overflow:auto;
             }
 
             .buttonLink {
                 display: flex;
-                margin-bottom: 16px;
                 width: 100%;
-                height: 83px;
+                height: 100%;
                 align-items: center;
                 justify-content: center;
                 background: linear-gradient(0deg, #ffd940ed, #87ceebbf, #faf9f6ff);
@@ -135,7 +198,8 @@
                 background-image: linear-gradient(90deg, rgb(255, 255, 255, 0), rgba(1,1,1,1));
             }
 
-            /*.iframeWrapper{
+            /*
+            .iframeWrapper{
                 background-size: 100%;
                 pointer-events: none;
             }
@@ -147,6 +211,11 @@
             }*/
 
             @media (max-width: 860px) {
+                body, html {
+                    width: 100%;
+                    overflow-x: hidden;
+                }
+
                 .foreground {
                     display: flex;
                     flex-direction: column;
@@ -154,8 +223,8 @@
 
                 .leftPanel {
                     margin-top: 25vw;
-                    margin-left: 32px;
-                    margin-right: 32px;
+                    margin-left: 6%;
+                    margin-right: 12%;
                     width: 83vw;
                     height: 64%;
                     align-items: center;
@@ -165,13 +234,25 @@
                     font-size: 12vw;
                 }
 
+                section.show {
+                    display: flex;
+                    width: 100vw;
+                    margin: 0;
+                    flex-direction: row;
+                    align-items: center;
+                }
+
+                .sectionMods{
+                    flex-direction: row;
+                }
+
                 .navigation {
                     display: flex;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-bottom: 16vh;
-                    width: 100vw;
-                    height: 32vw;
+                    margin: 0;
+                    margin-right: 2%; /* To fix button offset caused by buttonContainer{margin-right:16px;} */
+                    width: 100%;
+                    height: 0%;
+                    margin-bottom: 32vh;
                     flex-direction: row;
                     align-items: end;
                     justify-content: center;
@@ -179,11 +260,13 @@
                     
                 }
 
-                .buttonLink {
+                .buttonContainer {
                     position: relative;
-                    width: 150px;
-                    height: 64px;
-                    margin-left: 16px;
+                    width: var(--buttonContainerWidthPor );
+                    height: var(--buttonContainerHeightPor);
+                    margin: 0;
+                    margin-bottom: 18px;
+                    margin-right: 16px;
                 }
 
                 .bgOverlay {
@@ -194,10 +277,17 @@
     </head>
 
     <body>
+        <video autoplay loop playsinline id="backgroundVideo">
+            <source src="vid/halfLifeBGV.webm" type="video/webm">
+            Your browser does not support HTML5 video.
+        </video>
+
+        <div class="bgOverlay"></div>
+
         <div class="foreground">
             <div class="leftPanel">
                 <ul class="leftPanelContents">
-                    <li class="webHead"> <!--no head? °^°-->
+                    <li class="webHead" id="webHead"> <!--no head? °^°-->
                         <p>
                             Cirque Alvis
                         </p>
@@ -205,38 +295,85 @@
                 </ul>
             </div>
 
-            <ul class="navigation">
-                <li>
-                    <a class="buttonLink" href="https://twitch.tv/cirquealvis">
-                        <div class="buttonText"><span>Twitch</span></div>
-                        <div class="buttonHighlight"></div>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="buttonLink" href="https://youtube.com/cirquealvis">
-                        <div class="buttonText"><span>YouTube</span></div>
-                        <div class="buttonHighlight"></div>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="buttonLink" href="https://x.com/cirquealvis">
-                        <div class="buttonText"><span>Twitter</span></div>
-                        <div class="buttonHighlight"></div>
-                    </a>
-                </li>
+            <!--Contents-->
+            <section class="sectionHome" id="home">
+                <ul class="navigation">
+                    <li class="buttonContainer">
+                        <a class="buttonLink" href="https://twitch.tv/cirquealvis">
+                            <div class="buttonText"><span>Twitch</span></div>
+                            <div class="buttonHighlight"></div>
+                        </a>
+                    </li>
+                    
+                    <li class="buttonContainer">
+                        <a class="buttonLink" href="https://youtube.com/cirquealvis">
+                            <div class="buttonText"><span>YouTube</span></div>
+                            <div class="buttonHighlight"></div>
+                        </a>
+                    </li>
+                    
+                    <li class="buttonContainer">
+                        <a class="buttonLink" href="https://x.com/cirquealvis">
+                            <div class="buttonText"><span>Twitter</span></div>
+                            <div class="buttonHighlight"></div>
+                        </a>
+                    </li>
+    
+                    <li class="buttonContainer">
+                        <a class="buttonLink" href="https://steamcommunity.com/id/cirquealvis/">
+                            <div class="buttonText"><span>Steam</span></div>
+                            <div class="buttonHighlight"></div>
+                        </a>
+                    </li>
+    
+                    <!---<li class="buttonContainer">
+                        <a class="buttonLink" href="#modifications">
+                            <div class="buttonText"><span>Mods/Addons</span></div>
+                            <div class="buttonHighlight"></div>
+                        </a>
+                    </li>--->
+                </ul>
+            </section>
 
-                <li>
-                    <a class="buttonLink" href="https://steamcommunity.com/id/cirquealvis/">
-                        <div class="buttonText"><span>Steam</span></div>
-                        <div class="buttonHighlight"></div>
-                    </a>
-                </li>
-            </ul>
+            <section class="sectionMods" id="modifications">
+                <ul class="navigation">
+                    <li class="buttonContainer">
+                        <a class="buttonLink" href="#home">
+                            <div class="buttonText"><span>Home</span></div>
+                            <div class="buttonHighlight"></div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="modListContainer">
+                    <div class="scrollBoxHori">
+                        <ul>
+                            <li class="buttonContainer">
+                                <a class="buttonLink">
+                                    <div class="buttonText"><span>Play</span></div>
+                                    <div class="buttonHighlight"></div>
+                                </a>
+                            </li>
+
+                            <li class="buttonContainer">
+                                <a class="buttonLink" href="#modifications">
+                                    <div class="buttonText"><span>Mods/Addons</span></div>
+                                    <div class="buttonHighlight"></div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="scrollBoxVert">
+                        <ul>
+                            <li><a>test 1</a></li>
+                            <li><a>test 2</a></li>
+                            <li><a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, maiores nostrum. Officiis sint voluptatibus, cupiditate asperiores fuga a quae veniam sunt, voluptatem similique quia delectus cumque illo consectetur sequi reiciendis.</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
         </div>
-
-        <img class="bgOverlay">
 
         <!--<div class="iframeWrapper">
             <img src="img/placeholderBG.png">
@@ -244,4 +381,59 @@
                 src="https://www.youtube.com/embed?listType=playlist&list=UCIT_0-bWoXcnV9-_qqmUAVg">
             </iframe>
         </div>-->
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                function upateAnchoredText(){
+                    const title = document.getElementById("webTitle");
+                    const header = document.getElementById("webHead");
+                    const hash = window.location.hash;
+
+                    if(hash === "#home"){
+                        title.textContent = "CQAS – Home"
+                        header.textContent = "Cirque Alvis";
+                    } else if (hash === "#modifications"){
+                        title.textContent = "CQAS – Modifications"
+                        header.textContent = "Mods/Addons";
+                    }
+                }
+
+                window.addEventListener("hashchange", upateAnchoredText);
+                window.addEventListener("load", upateAnchoredText);
+            });
+
+            const sections = [...document.querySelectorAll('section')];
+            let active = null;
+
+            function fadeIn(sec){
+                sec.style.display = 'flex';
+                sec.classList.remove('show');
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        sec.classList.add('show')
+                    });
+                });
+                active = sec;
+            }
+
+            function switchTo(hash){
+                const next = sections.find(s => '#'+s.id === hash) || sections[0];
+                if (next === active) return;
+                if (active){
+                    active.classList.remove('show');
+                    active.addEventListener('transitionend', function te(e){
+                        if (e.propertyName !== 'opacity') return;
+                        active.style.display = 'none';
+                        active.removeEventListener('transitionend', te);
+
+                        fadeIn(next);
+                    });
+                } else {
+                    fadeIn(next);
+                }
+            }
+
+            window.addEventListener('hashchange', () => switchTo(location.hash));
+            window.addEventListener('load', () => switchTo(location.hash || '#home'));
+        </script>
     </body>
