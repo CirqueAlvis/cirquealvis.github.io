@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=SUSE:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
         <title id="webTitle">CQAS – Home</title>
         <style>
@@ -14,6 +15,9 @@
                 --buttonContainerHeightWide: 80px;
                 --buttonContainerWidthPor: 150px;
                 --buttonContainerHeightPor: 84px;
+                --font-sizeWide: 2.5vw;
+                --font-sizePor: 5vw;
+                --button-imgHeight: 194px; 
             }
 
             * {
@@ -22,7 +26,7 @@
             }
 
             body {
-                display: flexbox;
+                display: flex;
                 flex-direction: row;
                 justify-content: center;
                 width: 100vw;
@@ -38,7 +42,6 @@
                 background-blend-mode: hard-light;
 
                 font-family: "Exo 2", serif;
-                font-size: 32px;
                 color: rgb(255, 255, 255);
                 text-decoration: none;
 
@@ -50,10 +53,6 @@
 
             #backgroundVideo {
                 position: fixed;
-                right: 0;
-                bottom: 0;
-                min-width: 100%;
-                min-height: 100%;
             }
 
             .foreground {
@@ -84,7 +83,7 @@
 
             .webHead {
                 pointer-events: none;
-                font-size: 6vw;
+                font-size: 5vw;
                 font-weight: 800;
                 text-shadow: 2px 2px 10px rgb(255, 255, 255, 0.64), -2px -2px 10px rgba(26, 26, 26, 0.64);
             }
@@ -103,15 +102,21 @@
                 display: flex;
                 opacity: 1;
             }
-
+            
             .sectionHome {
                 width: 25%;
                 height: 75vh;
                 margin-right: 18%;
             }
 
-            .navigation {
-                margin-top: 18vh;
+            .sectionMods {
+                width: 500vw;
+                margin: 8%;
+                margin-right: 8%;
+            }
+
+            .navigation-home {
+                margin-top: 14vh;
                 position: relative;
                 display: inherit;
                 flex-direction: column;
@@ -121,56 +126,178 @@
                 font-weight: 600;
             }
 
+            .navigation-modifications {
+                position: relative;
+                display: inherit;
+                flex-direction: row;
+                list-style-type: none;
+                align-items: start;
+                width: 50vw;
+                height: 75vh;
+                font-weight: 600;
+            }
+
+            .modDescriptionContainer {
+                display: flex;
+                flex-direction: column;
+                align-items: baseline;
+                margin-right: 16px;
+                position: relative;
+                width: 100%;
+                height: 100%;
+            }
+
+            #modDetails {
+                display: none;
+            }
+
+            #modDetails.visible {
+                display: flex;
+            }
+
+            .modDetailsContainer {
+                border-radius: 16px;
+                font-family: 'SUSE';
+                padding: 4%;
+            }
+
+            .modDescriptionHeader {
+                display: flex;
+                flex-direction: row;
+                font-size: 28px;
+                font-weight: 800;
+                margin-bottom: 16px;
+            }
+
+            .modDescriptionContainer img {
+                height: var(--button-imgHeight);
+                margin-right: 16px;
+            }
+
+            .modTitle {
+                word-break: break-all;
+            }
+
+            .modDescription {   
+                font-size: 25px;
+            }
+
+            .modDescriptionText {
+                font-weight: 200;
+                text-indent: 24px;
+                margin-bottom: 32px;
+            }
+
+            .modListContainer {
+                width: 100%;
+                height: 100%;
+                height: 75vh;
+                position: relative;
+                color: #666666;
+                font-weight: 50;
+                text-decoration: line-through;
+            }
+
+            .modDependencies {
+                padding-bottom: 32px;
+            }
+
+            .modDownload {
+                font-weight: 800 !important;
+            }
+
+            #modLink {
+                display: inline-block;
+                width: 100%;
+                padding-left: 24px;
+                pointer-events: auto;
+                color: #bbbbbb;
+                text-decoration: underline;
+                font-weight: 250;
+                z-index: 10;
+                transition: padding-left 75ms cubic-bezier(0.25, 0.1, 0.25, 1.0);
+            }
+
+            #modLink:hover {
+                padding-left: 48px;
+                color: #ffed91;
+                font-weight: 250;
+                background-color: #00000064;
+            }
+
+            .scrollBoxHori {
+                height: 12%;
+                border: 2px solid #87cfeb16;
+                background-color:#87cfeb16;
+                background-image: linear-gradient(65deg, #00000016 5%, #ffffff08 10%, #00000016 50%, #ffffff08 55%, #00000016 70%, #ffffff08 75%);
+                backdrop-filter: blur(4px);
+                overflow-x: auto;
+                overflow-y: hidden;
+                border-radius: 16px;
+            }
+
+            .scrollBoxHori .buttonContainer {
+                display: inline-block;
+                width: 128px;
+                height: 100%;
+                margin-right: 5px;
+            }
+
+            .scrollBoxVert {
+                flex: 1;
+                height: 88%;
+                font-size: 25px;
+                border: 2px solid #87cfeb16;
+                background-color:#87cfeb16;
+                background-image: linear-gradient(65deg, #00000016 5%, #ffffff08 10%, #00000016 50%, #ffffff08 55%, #00000016 70%, #ffffff08 75%);
+                backdrop-filter: blur(4px);
+                overflow-x: hidden;
+                overflow-y: auto;
+                scrollbar-width: thin;
+                border-radius: 16px;
+            }
+
             .buttonContainer {
+                display: flex;
+                flex-direction: row;
                 width: var(--buttonContainerWidthWide);
                 height: var(--buttonContainerHeightWide);
                 margin-bottom: 16px;
             }
 
-            .sectionMods {
-                width: 75%;
-                margin: 8%;
-                margin-right: 32%;
-            }
-
-            .modListContainer {
-                width:50vw;
-                height:75vh;
-            }
-
-            .scrollBoxHori {
-                display: flex;
-                flex-direction: row;
-                border:1px solid #ccc;
-                background-color:#ccc;
-                overflow:auto;
-            }
-
-            .scrollBoxVert {
-                border:1px solid #ccc;
-                background-color:#ccc;
-                overflow:auto;
-            }
-
             .buttonLink {
-                display: flex;
-                width: 100%;
-                height: 100%;
-                align-items: center;
-                justify-content: center;
+                position: absolute;
+                width: var(--buttonContainerWidthWide);
+                height: var(--buttonContainerHeightWide);
                 background: linear-gradient(0deg, #ffd940ed, #87ceebbf, #faf9f6ff);
                 border-radius: 25px;
                 color: white;
+                font-size: var(--font-sizeWide);
                 text-decoration: inherit;
                 text-shadow: 2px 2px 4px rgb(255, 255, 255, 0.43), -2px -2px 4px rgba(26, 26, 26, 0.25);
             }
 
             .buttonText {
+                display: flex;
+                flex-direction: column;
+                top: calc((var(--buttonContainerHeightWide) - (var(--font-sizeWide))) - (var(--buttonContainerHeightWide) * 0.5) + 1vw);
+                left: 0;
                 pointer-events: none;
                 position: absolute;
                 width: 100%;
+                height: 100%;
+                font-weight: 600;
                 text-align: center;
+                justify-content: baseline;
                 z-index: 1;
+            }
+
+            .buttonImg {
+                visibility: hidden;
+                top: -8px;
+                pointer-events: none;
+                position: absolute;
+                height: 75%;
             }
 
             .buttonHighlight {
@@ -198,22 +325,19 @@
                 background-image: linear-gradient(90deg, rgb(255, 255, 255, 0), rgba(1,1,1,1));
             }
 
-            /*
-            .iframeWrapper{
-                background-size: 100%;
-                pointer-events: none;
-            }
-
-            .iframeWrapper iframe{
-                position: relative;
-                width: 100%;
-                height: 100vh;
-            }*/
-
             @media (max-width: 860px) {
                 body, html {
+                    margin: 0;
+                    padding: 0;
                     width: 100%;
+                    height: 100%;
+                    font-size: 5vw;
+                    overflow-y: hidden;
                     overflow-x: hidden;
+                }
+
+                p {
+                    display: none;
                 }
 
                 .foreground {
@@ -222,9 +346,8 @@
                 }
 
                 .leftPanel {
+                    margin: 0;
                     margin-top: 25vw;
-                    margin-left: 6%;
-                    margin-right: 12%;
                     width: 83vw;
                     height: 64%;
                     align-items: center;
@@ -234,30 +357,57 @@
                     font-size: 12vw;
                 }
 
-                section.show {
-                    display: flex;
-                    width: 100vw;
+                .sectionHome {
+                    width: 100%;
                     margin: 0;
-                    flex-direction: row;
-                    align-items: center;
                 }
 
-                .sectionMods{
-                    flex-direction: row;
+                .sectionMods {
+                    width: 100%;
+                    margin: 0;
                 }
 
-                .navigation {
-                    display: flex;
+                .navigation-home {
                     margin: 0;
-                    margin-right: 2%; /* To fix button offset caused by buttonContainer{margin-right:16px;} */
+                    margin-left: 16px;
+                    padding: 4%;
                     width: 100%;
                     height: 0%;
                     margin-bottom: 32vh;
                     flex-direction: row;
-                    align-items: end;
                     justify-content: center;
                     flex-wrap: wrap;
                     
+                }
+                
+                .navigation-modifications {
+                    margin: 0;
+                    padding: 8%;
+                    width: 100%;
+                    height: 100%;
+                    margin-bottom: 32vh;
+                    flex-direction: column;
+                    justify-content: baseline;
+                    align-items: center;
+                    flex-wrap:nowrap;
+                }
+
+                .modDescriptionContainer {
+                    margin: 0;
+                    padding: 16px;
+                    width: 100%;
+                    height: var(--buttonContainerHeightPor);
+                    flex-direction: row;
+                    justify-content: center;
+                }
+
+                #modDetails {
+                    display: none !important;
+                }
+
+                .scrollBoxVert {
+                    font-size: 16px;
+                    height: 43%;
                 }
 
                 .buttonContainer {
@@ -267,6 +417,18 @@
                     margin: 0;
                     margin-bottom: 18px;
                     margin-right: 16px;
+                }
+
+                .buttonText {
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    top: calc((var(--button-imgHeight) * 0.5) - (var(--buttonContainerHeightPor) * 0.5) - 38px);
+                }
+
+                .buttonImg {
+                    visibility: visible;
                 }
 
                 .bgOverlay {
@@ -297,90 +459,129 @@
 
             <!--Contents-->
             <section class="sectionHome" id="home">
-                <ul class="navigation">
+                <ul class="navigation-home">
                     <li class="buttonContainer">
                         <a class="buttonLink" href="https://twitch.tv/cirquealvis">
-                            <div class="buttonText"><span>Twitch</span></div>
+                            <div class="buttonText">
+                                <img src="img/twitch.png" class="buttonImg">
+                                <p>Twitch</p>
+                            </div>
                             <div class="buttonHighlight"></div>
                         </a>
                     </li>
                     
                     <li class="buttonContainer">
                         <a class="buttonLink" href="https://youtube.com/cirquealvis">
-                            <div class="buttonText"><span>YouTube</span></div>
+                            <div class="buttonText"><p>YouTube</p></div>
                             <div class="buttonHighlight"></div>
                         </a>
                     </li>
                     
                     <li class="buttonContainer">
                         <a class="buttonLink" href="https://x.com/cirquealvis">
-                            <div class="buttonText"><span>Twitter</span></div>
+                            <div class="buttonText"><p>Twitter</p></div>
                             <div class="buttonHighlight"></div>
                         </a>
                     </li>
     
                     <li class="buttonContainer">
                         <a class="buttonLink" href="https://steamcommunity.com/id/cirquealvis/">
-                            <div class="buttonText"><span>Steam</span></div>
+                            <div class="buttonText"><p>Steam</p></div>
                             <div class="buttonHighlight"></div>
                         </a>
                     </li>
     
-                    <!---<li class="buttonContainer">
-                        <a class="buttonLink" href="#modifications">
-                            <div class="buttonText"><span>Mods/Addons</span></div>
-                            <div class="buttonHighlight"></div>
-                        </a>
-                    </li>--->
-                </ul>
-            </section>
-
-            <section class="sectionMods" id="modifications">
-                <ul class="navigation">
                     <li class="buttonContainer">
-                        <a class="buttonLink" href="#home">
-                            <div class="buttonText"><span>Home</span></div>
+                        <a class="buttonLink" href="#modifications">
+                            <div class="buttonText"><p>Mods Used</p></div>
                             <div class="buttonHighlight"></div>
                         </a>
                     </li>
                 </ul>
-                <div class="modListContainer">
-                    <div class="scrollBoxHori">
-                        <ul>
-                            <li class="buttonContainer">
-                                <a class="buttonLink">
-                                    <div class="buttonText"><span>Play</span></div>
-                                    <div class="buttonHighlight"></div>
-                                </a>
-                            </li>
+            </section>
 
-                            <li class="buttonContainer">
-                                <a class="buttonLink" href="#modifications">
-                                    <div class="buttonText"><span>Mods/Addons</span></div>
-                                    <div class="buttonHighlight"></div>
-                                </a>
-                            </li>
-                        </ul>
+            <section class="sectionMods" id="modifications">
+                <ul class="navigation-modifications">
+                    <div class="modDescriptionContainer">
+                        <li class="buttonContainer">
+                            <a class="buttonLink" href="#home">
+                                <div class="buttonText"><p>Home</p></div>
+                                <div class="buttonHighlight"></div>
+                            </a>
+                        </li>
+
+                        <div class="modDetailsContainer" id="modDetails">
+                            <div class="modDescriptionHeader">
+                                <img class="modImg" src="">
+                                <p class="modTitle"></p>
+                                <p class="modCreator"></p>
+                            </div>
+    
+                            <div class="modDescription">
+                                <p class="modDescriptionText">
+                                    
+                                </p>
+                                <!--<div class="modDependencies">
+                                    <p>
+                                        Dependencies:
+                                    </p>
+    
+                                    <ul class="dependenciesList">
+                                        <li><a class="modLib" id="modLink" dataSite="modrinth" dataMod="">Dependency 1</a></li>
+                                    </ul>
+                                </div>-->
+
+                                <div class="modURL"><ul><li><a class="modDownload" id="modLink">Download</a></li></ul></div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="modListContainer">
+                        <div class="scrollBoxHori">
+                            <ul>
+                            </ul>
+                        </div>
 
-                    <div class="scrollBoxVert">
-                        <ul>
-                            <li><a>test 1</a></li>
-                            <li><a>test 2</a></li>
-                            <li><a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, maiores nostrum. Officiis sint voluptatibus, cupiditate asperiores fuga a quae veniam sunt, voluptatem similique quia delectus cumque illo consectetur sequi reiciendis.</a></li>
-                        </ul>
+                        <div class="scrollBoxVert">
+                            <ul class="modList">
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="better-falling-block-particles">Better Falling Block Particles</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="big-globe">Big Globe</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="cave-dust">Cave Dust</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="chunks-fade-in">Chunks Fade In</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="client-tweaks">Client Tweaks</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="distanthorizons">Distant Horizons</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="entity-model-features">Entity Model Features</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="entitytexturefeatures">Entity Texture Features</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="entityculling">Entity Culling</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="fallingleaves">Falling Leaves</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="head-in-the-clouds">Head In The Clouds</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="item-highlighter">Highlighter</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="immersivethunder">Immersive Thunder</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="immersive-ui">Immersive UI</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="indium">Indium</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="iris">Iris</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="lithosphere">Lithosphere</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="make_bubbles_pop">Make Bubbles Pop</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="modmenu">Mod Menu</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="moreculling">More Culling</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="noisium">Noisium</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="particle-core">Particle Core</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="particle-effects">Particle Effects</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="particle-rain">Particle Rain</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="particle-tweaks">Particle Tweaks</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="particle-unlimit">Particle Unlimit</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="particular">Particular</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="polytone">Polytone</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="presence-footsteps">Presence Footsteps</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="3dskinlayers">Skin Layers 3D</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="sodium">Sodium</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="sound-physics-remastered">Sound Physics Remastered</a></li>
+                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="visuality">Visuality</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
+                </ul>
             </section>
         </div>
-
-        <!--<div class="iframeWrapper">
-            <img src="img/placeholderBG.png">
-            <iframe
-                src="https://www.youtube.com/embed?listType=playlist&list=UCIT_0-bWoXcnV9-_qqmUAVg">
-            </iframe>
-        </div>-->
 
         <script>
             document.addEventListener("DOMContentLoaded", function(){
@@ -393,8 +594,8 @@
                         title.textContent = "CQAS – Home"
                         header.textContent = "Cirque Alvis";
                     } else if (hash === "#modifications"){
-                        title.textContent = "CQAS – Modifications"
-                        header.textContent = "Mods/Addons";
+                        title.textContent = "CQAS – Mods Used"
+                        header.textContent = "Mods Used in Minecraft";
                     }
                 }
 
@@ -435,5 +636,56 @@
 
             window.addEventListener('hashchange', () => switchTo(location.hash));
             window.addEventListener('load', () => switchTo(location.hash || '#home'));
+
+            const apiURLs = {
+                modrinth: "https://api.modrinth.com/v2/project/",
+                steam: "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/"
+            }
+            
+            const frontURLs = {
+                modrinth: "https://modrinth.com/mod/",
+                steam: "https://steamcommunity.com/sharedfiles/filedetails/?id="
+            };
+            
+            document.querySelectorAll('.modItem').forEach(link => {
+                const siteName = link.getAttribute('dataSite');
+                const modName = link.getAttribute('dataMod');
+                const modPageURL = frontURLs[siteName] ? frontURLs[siteName] + modName : null;
+
+                link.addEventListener('click', async () =>{
+                    const modImg = document.querySelector('.modImg');
+                    const modTitle = document.querySelector('.modTitle');
+                    const modCreator = document.querySelector('.modCreator');
+                    const modDescriptionText = document.querySelector('.modDescriptionText');
+                    const modDownload = document.querySelector('.modDownload');
+                    const detailsSection = document.getElementById('modDetails');
+                    if (detailsSection && !detailsSection.dataset.visible){
+                        detailsSection.style.display = 'block';
+                        detailsSection.dataset.visible = 'true';
+                    } 
+
+                    try {
+                        let data;
+
+                        if (siteName === "modrinth"){
+                            const response = await fetch(`${apiURLs.modrinth}${modName}`);
+                            data = await response.json();
+
+                            if (data && modImg) modImg.src = data.icon_url;
+                            if (data && modTitle) modTitle.textContent = data.title;
+                            if (data && modCreator) modCreator.textContent = data.Creator;
+                            if (data && modDescriptionText) modDescriptionText.textContent = data.description;
+                            if (data && modDownload){
+                                modDownload.href = frontURLs[siteName] + data.slug;
+                                modDownload.target = "_blank";
+                            } 
+
+                            console.log(`Fetched Modrinth details: ${data.title}`);
+                        }   
+                    } catch (err) {
+                        console.error("Error fetching mod details:", err);
+                    }
+                })
+            });
         </script>
     </body>
