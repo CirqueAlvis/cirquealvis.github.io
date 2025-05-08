@@ -51,6 +51,10 @@
                 user-select: none;
             }
 
+            ul {
+                list-style-type: none;
+            }
+
             #backgroundVideo {
                 position: fixed;
             }
@@ -131,24 +135,56 @@
                 display: inherit;
                 flex-direction: row;
                 list-style-type: none;
-                align-items: start;
+                align-items: center;
                 width: 50vw;
                 height: 75vh;
                 font-weight: 600;
             }
 
+            .modListContainer {
+                width: 100%;
+                height: 75vh;
+                position: relative;
+                color: #666666;
+                font-weight: 50;
+                text-decoration: line-through;
+            }
+
             .modDescriptionContainer {
                 display: flex;
                 flex-direction: column;
-                align-items: baseline;
-                margin-right: 16px;
+                justify-content: center;
+                align-items: center;
+                margin-right: 64px;
                 position: relative;
                 width: 100%;
                 height: 100%;
             }
 
+            .modImg {
+                height: var(--button-imgHeight);
+                margin-right: 16px;
+                border-radius: 16px;
+                filter: drop-shadow(-1px -1px 1px rgba(26, 26, 26, 0.83)) drop-shadow(1px 1px 1px #87cfebab);
+            }
+
+            .modDescriptionHeader {
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 16px;
+                font-size: 1.5vw;
+            }
+
             #modDetails {
                 display: none;
+                width: 100%;
+                height: 100%;
+                min-height: 100px;
+                border: 1px solid #87cfeb50;
+                background-color:#87cfeb16;
+                background-image: linear-gradient(65deg, #00000016 5%, #ffffff08 10%, #00000016 50%, #ffffff08 55%, #00000016 70%, #ffffff08 75%);
+                box-shadow: inset 0 0 64px #87cfeb16;
+                backdrop-filter: blur(8px);
             }
 
             #modDetails.visible {
@@ -161,21 +197,8 @@
                 padding: 4%;
             }
 
-            .modDescriptionHeader {
-                display: flex;
-                flex-direction: row;
-                font-size: 28px;
-                font-weight: 800;
-                margin-bottom: 16px;
-            }
-
-            .modDescriptionContainer img {
-                height: var(--button-imgHeight);
-                margin-right: 16px;
-            }
-
             .modTitle {
-                word-break: break-all;
+                word-break:normal;
             }
 
             .modDescription {   
@@ -188,22 +211,8 @@
                 margin-bottom: 32px;
             }
 
-            .modListContainer {
-                width: 100%;
-                height: 100%;
-                height: 75vh;
-                position: relative;
-                color: #666666;
-                font-weight: 50;
-                text-decoration: line-through;
-            }
-
             .modDependencies {
                 padding-bottom: 32px;
-            }
-
-            .modDownload {
-                font-weight: 800 !important;
             }
 
             #modLink {
@@ -225,12 +234,19 @@
                 background-color: #00000064;
             }
 
+            .modDownload {
+                font-weight: 800 !important;
+            }
+
             .scrollBoxHori {
+                display: flex;
+                flex-direction: column;
                 height: 12%;
-                border: 2px solid #87cfeb16;
+                border: 1px solid #87cfeb50;
                 background-color:#87cfeb16;
                 background-image: linear-gradient(65deg, #00000016 5%, #ffffff08 10%, #00000016 50%, #ffffff08 55%, #00000016 70%, #ffffff08 75%);
-                backdrop-filter: blur(4px);
+                box-shadow: inset 0 0 64px #87cfeb16;
+                backdrop-filter: blur(8px);
                 overflow-x: auto;
                 overflow-y: hidden;
                 border-radius: 16px;
@@ -247,9 +263,10 @@
                 flex: 1;
                 height: 88%;
                 font-size: 25px;
-                border: 2px solid #87cfeb16;
+                border: 1px solid #87cfeb50;
                 background-color:#87cfeb16;
                 background-image: linear-gradient(65deg, #00000016 5%, #ffffff08 10%, #00000016 50%, #ffffff08 55%, #00000016 70%, #ffffff08 75%);
+                box-shadow: inset 0 0 64px #87cfeb16;
                 backdrop-filter: blur(4px);
                 overflow-x: hidden;
                 overflow-y: auto;
@@ -274,10 +291,10 @@
                 color: white;
                 font-size: var(--font-sizeWide);
                 text-decoration: inherit;
-                text-shadow: 2px 2px 4px rgb(255, 255, 255, 0.43), -2px -2px 4px rgba(26, 26, 26, 0.25);
+                text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.43), -2px -2px 4px rgba(26, 26, 26, 0.43);
             }
 
-            .buttonText {
+            .buttonContents {
                 display: flex;
                 flex-direction: column;
                 top: calc((var(--buttonContainerHeightWide) - (var(--font-sizeWide))) - (var(--buttonContainerHeightWide) * 0.5) + 1vw);
@@ -298,6 +315,7 @@
                 pointer-events: none;
                 position: absolute;
                 height: 75%;
+                filter: drop-shadow(1.5px 1.5px 2px #00000050) drop-shadow(-1.5px -1.5px 2px #ffffffab);
             }
 
             .buttonHighlight {
@@ -336,10 +354,6 @@
                     overflow-x: hidden;
                 }
 
-                p {
-                    display: none;
-                }
-
                 .foreground {
                     display: flex;
                     flex-direction: column;
@@ -347,7 +361,7 @@
 
                 .leftPanel {
                     margin: 0;
-                    margin-top: 25vw;
+                    padding-top: 32px;
                     width: 83vw;
                     height: 64%;
                     align-items: center;
@@ -386,8 +400,8 @@
                     width: 100%;
                     height: 100%;
                     margin-bottom: 32vh;
-                    flex-direction: column;
-                    justify-content: baseline;
+                    flex-direction: column-reverse;
+                    justify-content: start;
                     align-items: center;
                     flex-wrap:nowrap;
                 }
@@ -405,9 +419,26 @@
                     display: none !important;
                 }
 
+                .modListContainer {
+                    height: calc(29% - 50vw);
+                }
+
+                .modItem {
+                    font-size: calc(23px - 0.1vw);
+                    padding-top: 3vw;
+                    padding-bottom: 3vw;
+                }
+
+                .scrollBoxHori {
+                    backdrop-filter: none;
+                    -webkit-backdrop-filter: blur(4px);
+                }
+
                 .scrollBoxVert {
                     font-size: 16px;
-                    height: 43%;
+                    height: 83%;
+                    backdrop-filter: none;
+                    -webkit-backdrop-filter: blur(4px);
                 }
 
                 .buttonContainer {
@@ -419,12 +450,16 @@
                     margin-right: 16px;
                 }
 
-                .buttonText {
+                .buttonContents {
                     flex-direction: row;
                     justify-content: center;
                     align-items: center;
                     text-align: center;
-                    top: calc((var(--button-imgHeight) * 0.5) - (var(--buttonContainerHeightPor) * 0.5) - 38px);
+                    top: calc((var(--button-imgHeight) * 0.5) - (var(--buttonContainerHeightPor) * 0.5) - 37px);
+                }
+
+                .buttonText {
+                    display: none;
                 }
 
                 .buttonImg {
@@ -462,9 +497,9 @@
                 <ul class="navigation-home">
                     <li class="buttonContainer">
                         <a class="buttonLink" href="https://twitch.tv/cirquealvis">
-                            <div class="buttonText">
+                            <div class="buttonContents">
                                 <img src="img/twitch.png" class="buttonImg">
-                                <p>Twitch</p>
+                                <p class="buttonText">Twitch</p>
                             </div>
                             <div class="buttonHighlight"></div>
                         </a>
@@ -472,28 +507,40 @@
                     
                     <li class="buttonContainer">
                         <a class="buttonLink" href="https://youtube.com/cirquealvis">
-                            <div class="buttonText"><p>YouTube</p></div>
+                            <div class="buttonContents">
+                                <img src="img/youtube.png" class="buttonImg">
+                                <p class="buttonText">YouTube</p>
+                            </div>
                             <div class="buttonHighlight"></div>
                         </a>
                     </li>
                     
                     <li class="buttonContainer">
                         <a class="buttonLink" href="https://x.com/cirquealvis">
-                            <div class="buttonText"><p>Twitter</p></div>
+                            <div class="buttonContents">
+                                <img src="img/twitter.png" class="buttonImg">
+                                <p class="buttonText">Twitter</p>
+                            </div>
                             <div class="buttonHighlight"></div>
                         </a>
                     </li>
     
                     <li class="buttonContainer">
                         <a class="buttonLink" href="https://steamcommunity.com/id/cirquealvis/">
-                            <div class="buttonText"><p>Steam</p></div>
+                            <div class="buttonContents">
+                                <img src="img/steam.png" class="buttonImg">
+                                <p class="buttonText">Steam</p>
+                            </div>
                             <div class="buttonHighlight"></div>
                         </a>
                     </li>
     
                     <li class="buttonContainer">
                         <a class="buttonLink" href="#modifications">
-                            <div class="buttonText"><p>Mods Used</p></div>
+                            <div class="buttonContents">
+                                <img src="img/modrinth.png" class="buttonImg">
+                                <p class="buttonText">Mods Used</p>
+                            </div>
                             <div class="buttonHighlight"></div>
                         </a>
                     </li>
@@ -505,7 +552,10 @@
                     <div class="modDescriptionContainer">
                         <li class="buttonContainer">
                             <a class="buttonLink" href="#home">
-                                <div class="buttonText"><p>Home</p></div>
+                                <div class="buttonContents">
+                                    <img src="img/home.png" class="buttonImg">
+                                    <p class="buttonText">Home</p>
+                                </div>
                                 <div class="buttonHighlight"></div>
                             </a>
                         </li>
@@ -531,7 +581,7 @@
                                     </ul>
                                 </div>-->
 
-                                <div class="modURL"><ul><li><a class="modDownload" id="modLink">Download</a></li></ul></div>
+                                <div class="modURL"><ul><li><a class="modDownload" id="modLink">Download ▼</a></li></ul></div>
                             </div>
                         </div>
                     </div>
@@ -596,6 +646,9 @@
                     } else if (hash === "#modifications"){
                         title.textContent = "CQAS – Mods Used"
                         header.textContent = "Mods Used in Minecraft";
+                    } else if (hash === "#modifications#obs-studio"){
+                        title.textContent = "CQAS - OBS Plugins"
+                        header.textContent = "Plugins Used in OBS"
                     }
                 }
 
@@ -637,6 +690,13 @@
             window.addEventListener('hashchange', () => switchTo(location.hash));
             window.addEventListener('load', () => switchTo(location.hash || '#home'));
 
+            const isMobile = window.innerWidth <= 860;
+            if (isMobile){
+                const video = document.getElementById("backgroundVideo");
+                video.removeAttribute("autoplay");
+                video.pause();
+            }
+
             const apiURLs = {
                 modrinth: "https://api.modrinth.com/v2/project/",
                 steam: "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/"
@@ -653,37 +713,44 @@
                 const modPageURL = frontURLs[siteName] ? frontURLs[siteName] + modName : null;
 
                 link.addEventListener('click', async () =>{
-                    const modImg = document.querySelector('.modImg');
-                    const modTitle = document.querySelector('.modTitle');
-                    const modCreator = document.querySelector('.modCreator');
-                    const modDescriptionText = document.querySelector('.modDescriptionText');
-                    const modDownload = document.querySelector('.modDownload');
-                    const detailsSection = document.getElementById('modDetails');
-                    if (detailsSection && !detailsSection.dataset.visible){
-                        detailsSection.style.display = 'block';
-                        detailsSection.dataset.visible = 'true';
-                    } 
+                    const isMobile = window.innerWidth <= 860;
+                    
+                    if (isMobile){
+                        window.open(modPageURL, '_blank');
 
-                    try {
-                        let data;
+                    } else {
+                        const modImg = document.querySelector('.modImg');
+                        const modTitle = document.querySelector('.modTitle');
+                        const modCreator = document.querySelector('.modCreator');
+                        const modDescriptionText = document.querySelector('.modDescriptionText');
+                        const modDownload = document.querySelector('.modDownload');
+                        const detailsSection = document.getElementById('modDetails');
+                        if (detailsSection && !detailsSection.dataset.visible){
+                            detailsSection.style.display = 'block';
+                            detailsSection.dataset.visible = 'true';
+                        } 
 
-                        if (siteName === "modrinth"){
-                            const response = await fetch(`${apiURLs.modrinth}${modName}`);
-                            data = await response.json();
+                        try {
+                            let data;
 
-                            if (data && modImg) modImg.src = data.icon_url;
-                            if (data && modTitle) modTitle.textContent = data.title;
-                            if (data && modCreator) modCreator.textContent = data.Creator;
-                            if (data && modDescriptionText) modDescriptionText.textContent = data.description;
-                            if (data && modDownload){
-                                modDownload.href = frontURLs[siteName] + data.slug;
-                                modDownload.target = "_blank";
-                            } 
+                            if (siteName === "modrinth"){
+                                const response = await fetch(`${apiURLs.modrinth}${modName}`);
+                                data = await response.json();
 
-                            console.log(`Fetched Modrinth details: ${data.title}`);
-                        }   
-                    } catch (err) {
-                        console.error("Error fetching mod details:", err);
+                                if (data && modImg) modImg.src = data.icon_url;
+                                if (data && modTitle) modTitle.textContent = data.title;
+                                if (data && modCreator) modCreator.textContent = data.Creator;
+                                if (data && modDescriptionText) modDescriptionText.textContent = data.description;
+                                if (data && modDownload){
+                                    modDownload.href = frontURLs[siteName] + data.slug;
+                                    modDownload.target = "_blank";
+                                } 
+
+                                console.log(`Fetched Modrinth details: ${data.title}`);
+                            }   
+                        } catch (err) {
+                            console.error("Error fetching mod details:", err);
+                        }
                     }
                 })
             });
