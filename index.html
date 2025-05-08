@@ -586,10 +586,10 @@
                         </div>
                     </div>
                     <div class="modListContainer">
-                        <div class="scrollBoxHori">
+                        <!--<div class="scrollBoxHori">
                             <ul>
                             </ul>
-                        </div>
+                        </div>-->
 
                         <div class="scrollBoxVert">
                             <ul class="modList">
@@ -690,12 +690,21 @@
             window.addEventListener('hashchange', () => switchTo(location.hash));
             window.addEventListener('load', () => switchTo(location.hash || '#home'));
 
-            const isMobile = window.innerWidth <= 860;
-            if (isMobile){
+            function updateVideoPlayback(){
+                const isMobile = window.innerWidth <= 860;
                 const video = document.getElementById("backgroundVideo");
-                video.removeAttribute("autoplay");
-                video.pause();
-            }
+
+                if (isMobile){
+                    video.removeAttribute("autoplay");
+                    video.pause();
+                } else {
+                    video.setAttribute("autoplay", "");
+                    video.play();
+                }
+            };
+
+            window.addEventListener("DOMContentLoaded", updateVideoPlayback);
+            window.addEventListener("resize", updateVideoPlayback);
 
             const apiURLs = {
                 modrinth: "https://api.modrinth.com/v2/project/",
