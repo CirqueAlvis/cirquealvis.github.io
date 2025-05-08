@@ -36,9 +36,10 @@
                 position: absolute;
 
                 background-image: url(img/placeholderBG.png);
+                background-size: cover;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
-                background-position: right;
+                background-position: center;
                 background-blend-mode: hard-light;
 
                 font-family: "Exo 2", serif;
@@ -57,6 +58,10 @@
 
             #backgroundVideo {
                 position: fixed;
+                left: 0;
+                bottom: 0;
+                min-width: 100%; 
+                min-height: 100%;
             }
 
             .foreground {
