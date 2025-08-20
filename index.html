@@ -185,12 +185,12 @@
                 width: 100%;
                 height: 100%;
                 min-height: 100px;
-                border: 1px solid #ccedfa80;
-                background-color:#87ceeb16;
-                box-shadow: inset 0 0 128px #87ceeb25;
+                border: 1px solid #ffffff80;
+                background-color:#7ac8ff21;
+                box-shadow: inset 0 0 64px #ffffff51;
                 backdrop-filter: brightness(1.5)
-                    blur(4px)
-                    url(#displacementFilter);
+                    url(#displacementFilter)
+                    blur(4px);
             }
 
             #modDetails.visible {
@@ -248,12 +248,12 @@
                 display: flex;
                 flex-direction: column;
                 height: 12%;
-                border: 1px solid #87cfeb50;
-                background-color:#87cfeb16;
-                box-shadow: inset 0 0 128px #87cfeb16;
-                backdrop-filter: brightness(2.5)
-                    blur(4px)
-                    url(#displacementFilter);
+                border: 1px solid #ffffffbf;
+                background-color:#7ac8ff46;
+                box-shadow: inset 0 0 64px #ffffff51;
+                backdrop-filter: brightness(1.5)
+                    url(#displacementFilter)
+                    blur(4px);
                 overflow-x: auto;
                 overflow-y: hidden;
                 border-radius: 16px;
@@ -270,12 +270,12 @@
                 flex: 1;
                 height: 100%;
                 font-size: 25px;
-                border: 1px solid #ccedfa80;
-                background-color:#87ceeb16;
-                box-shadow: inset 0 0 64px #87ceeb25;
-                backdrop-filter: brightness(2.5)
-                    blur(4px)
-                    url(#displacementFilter);
+                border: 1px solid #ffffff80;
+                background-color:#7ac8ff21;
+                box-shadow: inset 0 0 64px #ffffff51;
+                backdrop-filter: brightness(1.5)
+                    url(#displacementFilter)
+                    blur(4px);
                 overflow-x: hidden;
                 overflow-y: auto;
                 scrollbar-width: thin;
@@ -294,11 +294,11 @@
                 position: absolute;
                 width: var(--buttonContainerWidthWide);
                 height: var(--buttonContainerHeightWide);
-                border: 1px solid rgba(255, 255, 255, 0.253);
-                background: linear-gradient(0deg, #87ceeb00,#87ceeb75, #ccedfa80);
-                backdrop-filter: brightness(2.8)
-                    blur(4px)
-                    url(#displacementFilter);
+                border: 1px solid #ffffff41;
+                background: linear-gradient(0deg, #fbf3db94 8%,#7ac8ff64 64%, #ffffffbb 93%);
+                backdrop-filter: brightness(1.5)
+                    url(#displacementFilter)
+                    blur(2px);
                 border-radius: 25px;
                 color: white;
                 font-size: var(--font-sizeWide);
@@ -332,27 +332,28 @@
 
             .buttonHighlight {
                 opacity: 0;
-                transition: opacity 0.23s ease;
+                transition: opacity 0.125s ease;
                 position: relative;
                 width: inherit;
                 height: inherit;
                 border-radius: inherit;
-                background: linear-gradient(0deg, #faf0d075,#fff4bf50, #87ceeb00);
+                backdrop-filter: saturate(8.0)
+                    brightness(1.25);
             }
 
             .buttonHighlight:hover {
-                opacity: 1;
+                opacity: 0.5;
             }
 
             .buttonHighlight:active {
-                background: linear-gradient(0deg, #ffffffc4, #00000025, #00000025);
+                backdrop-filter: brightness(0.0);
             }
 
             .bgOverlay {
                 width: inherit;
                 height: inherit;
                 position: inherit;
-                background-image: linear-gradient(90deg, rgb(255, 255, 255, 0), rgba(1,1,1,1));
+                background-image: linear-gradient(90deg, #ffffff00, #000000aa);
             }
 
             @media (max-width: 860px) {
@@ -443,6 +444,9 @@
 
                 .scrollBoxHori {
                     backdrop-filter: none;
+                    backdrop-filter: brightness(1.5)
+                        url(#displacementFilter)
+                        blur(4px);
                     -webkit-backdrop-filter: blur(4px);
                 }
 
@@ -450,8 +454,8 @@
                     font-size: 16px;
                     height: 83%;
                     backdrop-filter: brightness(1.5)
-                        blur(4px)
-                        url(#displacementFilter);
+                        url(#displacementFilter)
+                        blur(4px);
                     -webkit-backdrop-filter: blur(4px);
                 }
 
@@ -481,7 +485,7 @@
                 }
 
                 .bgOverlay {
-                    background-image: linear-gradient(180deg, rgb(255, 255, 255, 0), rgba(1,1,1,1));
+                    background-image: linear-gradient(180deg, rgb(255, 255, 255, 0), #000000aa);
                 }
             }
         </style>
@@ -491,7 +495,7 @@
         <filter id="displacementFilter">
             <feImage href="img/filters/liquidGlass.svg"
                 preserveAspectRatio="none"/>
-            <feDisplacementMap in="SourceGraphic" scale="100" xChannelSelector="R" yChannelSelector="G" />
+            <feDisplacementMap in="SourceGraphic" scale="225" xChannelSelector="R" yChannelSelector="G" />
         </filter>
     </svg>
 
