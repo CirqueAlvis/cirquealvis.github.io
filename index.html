@@ -1,504 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=SUSE:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
-
-        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-        <title id="webTitle">CQAS – Home</title>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+                <title id="webTitle">CQAS – Home</title>
+        </head>
         <style>
+            @font-face {
+                font-family: "Unbounded";
+                src: url("./fonts/unbounded-vf.ttf");
+                font-weight: 800;
+                text-shadow: 4px, 4px, 6px, rgba(0,0,0,255);
+            }
+            @font-face {
+                font-family: "SUSE";
+                src: url("./fonts/suse-vf.ttf");
+                font-weight: 600;
+            }
+            @font-face {
+                font-family: "Jura";
+                src: url("./fonts/jura-vf.ttf");
+            }
+
             :root {
-                --buttonContainerWidthWide: 100%;
+                --header-font: "Unbounded";
+                --text-font: "SUSE";
+                --subtitle-font: "Jura";
+                --neumorphic-shadow: 0.13vh 0.13vh 0.5vh rgba(255,255,255,255), -0.13vh -0.13vh 0.5vh rgba(0,0,0,255);
+
+                --buttonContainerWidthWide: 50%;
                 --buttonContainerHeightWide: 80px;
                 --buttonContainerWidthPor: 150px;
                 --buttonContainerHeightPor: 84px;
                 --font-sizeWide: 2.5vw;
                 --font-sizePor: 5vw;
                 --button-imgHeight: 194px;
+
+                /* Glass Distort Filter */
                 --glass-innerSpec-color: #ffffffff;
                 --glass-outerSpec-color: #ffffff33;
-                --glass-specular-shadow: inset 1px 1px 4px var(--glass-innerSpec-color), inset 0 0 64px var(--glass-outerSpec-color);
-                --glass-button-color: linear-gradient(0deg, #fbf3db94 8%,#7ac8ff40 38%, #7ac8ff40 64%, #ffffffbb 93%);
-                --glass-button-borderRadius: 25px;
+                --glass-specular-shadow: inset 0.125vw 0.125vh 0.25vw var(--glass-innerSpec-color), inset 0 0 64px var(--glass-outerSpec-color);
+                --glass-button-color: linear-gradient(0deg, #faf0d094 8%,#121c2094 40%, #121c2094 55%, #ffffffbb 93%);
+                --glass-button-borderRadius: 6px;
                 --glass-panel-color: #7ac8ff21;
-                --glass-filter: url(#displacementFilter) brightness(1.3) blur(2.5px) saturate(125%);
+                --glass-filter: brightness(1.3) blur(0.25vh) saturate(125%);
             }
 
-            * {
-                padding: 0;
+            body{
                 margin: 0;
-            }
-
-            body {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
                 width: 100vw;
                 height: 100vh;
-                padding-right: 32px;
                 overflow: hidden;
                 position: absolute;
+                user-select: none;
 
+                color: white;
+                text-shadow: var(--neumorphic-shadow);
                 background-image: url(img/placeholderBG.png);
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-position: center;
                 background-blend-mode: hard-light;
-
-                font-family: "Exo 2", serif;
-                color: rgb(255, 255, 255);
-                text-decoration: none;
-
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
             }
 
-            ul {
+            ul{
                 list-style-type: none;
-            }
-
-            #backgroundVideo {
-                position: fixed;
-                left: 0;
-                bottom: 0;
-                min-width: 100%; 
-                min-height: 100%;
+                padding: 0;
             }
 
             .foreground {
-                position: absolute;
                 display: flex;
-                flex-direction: inherit;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
                 width: inherit;
                 height: inherit;
-                align-items: center;
-                z-index: 1;
-            }
-
-            .leftPanel {
-                position: relative;
-                margin-top: 64px;
-                margin-bottom: 64px;
-                margin-left: 128px;
-                margin-right: 16px;
-                display: inherit;
-                justify-content: center;
-                width: 64%;
                 text-align: center;
             }
 
-            .leftPanelContents {
-                list-style-type: none;
+            .leftPanel{
+                width: 100%;
             }
 
-            .webHead {
-                pointer-events: none;
-                font-size: 5vw;
-                font-weight: 800;
-                text-shadow: 2px 2px 10px rgb(255, 255, 255, 0.64), -2px -2px 10px rgba(26, 26, 26, 0.64);
-            }
-
-            section {
-                display: none;
-                width: 25%;
-                margin-left: 4%;
-                margin-right: 18%;
-
-                opacity: 0;
-                transition: opacity 0.08s ease;
-            }
-
-            section.show {
-                display: flex;
-                opacity: 1;
+            .leftPanelContents{
+                width: 100%;
             }
             
-            .sectionHome {
-                width: 25%;
-                height: 75vh;
-                margin-right: 18%;
+            .webHead{
+                text-align: end;
+                font-family: var(--header-font);
+                font-size: 8vh;
+                
             }
 
-            .sectionMods {
-                width: 500vw;
-                margin: 8%;
-                margin-right: 8%;
-            }
-
-            .navigation-home {
-                margin-top: 14vh;
-                position: relative;
+            .rightPanel{
                 display: inherit;
-                flex-direction: column;
-                list-style-type: none;
+                flex-direction: inherit;
+                justify-content: inherit;
+                align-items: inherit;
+                text-align: inherit;
                 width: 100%;
-                height: 100%;
-                font-weight: 600;
             }
 
-            .navigation-modifications {
-                position: relative;
-                display: inherit;
+            .page{
+                flex-direction: column;
+            }
+
+            .list{
+                flex-shrink: 0;
                 flex-direction: row;
-                list-style-type: none;
-                align-items: center;
-                width: 50vw;
-                height: 75vh;
-                font-weight: 600;
-            }
-
-            .modListContainer {
-                width: 100%;
-                height: 75vh;
-                position: relative;
-                color: #666666;
-                font-weight: 50;
-                text-decoration: line-through;
-            }
-
-            .modDescriptionContainer {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                margin-right: 64px;
-                position: relative;
-                width: 100%;
-                height: 100%;
-            }
-
-            .modImg {
-                height: var(--button-imgHeight);
-                margin-right: 16px;
-                border-radius: 16px;
-                filter: drop-shadow(-1px -1px 1px rgba(26, 26, 26, 0.83)) drop-shadow(1px 1px 1px #87cfebab);
-            }
-
-            .modDescriptionHeader {
-                display: flex;
-                flex-direction: row;
-                margin-bottom: 16px;
-                font-size: 1.5vw;
-            }
-
-            #modDetails {
-                display: none;
-                width: 100%;
-                height: 100%;
-                min-height: 100px;
-                background-color: var(--glass-panel-color);
-                box-shadow: var(--glass-specular-shadow);
-                backdrop-filter: var(--glass-filter);
-            }
-
-            #modDetails.visible {
-                display: flex;
-            }
-
-            .modDetailsContainer {
-                border-radius: 16px;
-                font-family: 'SUSE';
-                padding: 4%;
-            }
-
-            .modTitle {
-                word-break:normal;
-            }
-
-            .modDescription {   
-                font-size: 25px;
-            }
-
-            .modDescriptionText {
-                font-weight: 200;
-                text-indent: 24px;
-                margin-bottom: 32px;
-            }
-
-            .modDependencies {
-                padding-bottom: 32px;
-            }
-
-            #modLink {
-                display: inline-block;
-                width: 100%;
-                padding-left: 24px;
-                pointer-events: auto;
-                color: #bbbbbb;
-                text-decoration: underline;
-                font-weight: 250;
-                z-index: 10;
-                transition: padding-left 75ms cubic-bezier(0.25, 0.1, 0.25, 1.0);
-            }
-
-            #modLink:hover {
-                padding-left: 48px;
-                color: #ffed91;
-                font-weight: 250;
-                background-color: #00000064;
-            }
-
-            .modDownload {
-                font-weight: 800 !important;
-            }
-
-            .scrollBoxHori {
-                display: flex;
-                flex-direction: column;
-                height: 12%;
-                background-color: var(--glass-panel-color);
-                box-shadow: var(--glass-specular-shadow);
-                backdrop-filter: var(--glass-filter);
-                overflow-x: auto;
+                overflow-x: scroll;
                 overflow-y: hidden;
-                border-radius: 16px;
+                white-space: nowrap;
+                width: 50vh;
             }
 
-            .scrollBoxHori .buttonContainer {
-                display: inline-block;
-                width: 128px;
-                height: 100%;
-                margin-right: 5px;
+            #gameList{
+                width: 42.3vh;
             }
 
-            .scrollBoxVert {
-                flex: 1;
-                height: 100%;
-                font-size: 25px;
-                background-color: var(--glass-panel-color);
-                box-shadow: var(--glass-specular-shadow);
-                backdrop-filter: var(--glass-filter);
-                overflow-x: hidden;
-                overflow-y: auto;
-                scrollbar-width: thin;
-                border-radius: 16px;
-            }
-
-            .buttonContainer {
+            #modList{
+                all: unset;
                 display: flex;
-                flex-direction: row;
-                width: var(--buttonContainerWidthWide);
-                height: var(--buttonContainerHeightWide);
-                margin-bottom: 16px;
+                flex-direction: column;
             }
 
-            .buttonLink {
-                position: absolute;
-                width: var(--buttonContainerWidthWide);
-                height: var(--buttonContainerHeightWide);
-                background-color: var(--glass-panel-color);
+            .button{
+                /* Unset Button Style */
+                all: unset;
+                background: none;
+                border: none;
+                padding: 0;
+
+                /* New Button Style */
                 background: var(--glass-button-color);
                 box-shadow: var(--glass-specular-shadow);
+                border-radius: var(--glass-button-borderRadius);
                 backdrop-filter: var(--glass-filter);
-                border-radius: 25px;
-                color: white;
-                font-size: var(--font-sizeWide);
-                text-decoration: inherit;
-                text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.43), -2px -2px 4px rgba(26, 26, 26, 0.43);
+                -webkit-backdrop-filter: var(--glass-filter);
+
+                width: 40vh;
+                height: 8vh;
+                margin: 1vh;
+                font-family: var(--text-font);
+                font-size: 3vh;
             }
 
-            .buttonContents {
-                display: flex;
-                flex-direction: column;
-                top: calc((var(--buttonContainerHeightWide) - (var(--font-sizeWide))) - (var(--buttonContainerHeightWide) * 0.5) + 1vw);
-                left: 0;
-                pointer-events: none;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                font-weight: 600;
-                text-align: center;
-                justify-content: baseline;
-                z-index: 1;
+            #tabs{
+                width: 20vh;
+                height: 6vh;
             }
 
-            .buttonImg {
-                visibility: hidden;
-                top: -8px;
-                pointer-events: none;
-                position: absolute;
-                height: 75%;
-                filter: drop-shadow(1.5px 1.5px 2px #00000050) drop-shadow(-1.5px -1.5px 2px #ffffffab);
+            #homeButton{
+                width: 20vh;
             }
 
-            .buttonHighlight {
-                opacity: 0;
-                transition: opacity 0.125s ease;
-                position: relative;
-                width: inherit;
-                height: inherit;
-                border-radius: inherit;
-                backdrop-filter: saturate(8.0)
-                    brightness(1.25);
+            .button:hover{
+                filter: brightness(125%);
+            }
+            
+            .button:active{
+                filter: saturate(500%);
             }
 
-            .buttonHighlight:hover {
-                opacity: 0.5;
-            }
-
-            .buttonHighlight:active {
-                backdrop-filter: brightness(0.0);
-            }
-
-            .bgOverlay {
-                width: inherit;
-                height: inherit;
-                position: inherit;
-                background-image: linear-gradient(90deg, #ffffff00, #000000aa);
-            }
-
-            @media (max-width: 860px) {
-                body, html {
-                    margin: 0;
-                    padding: 0;
-                    width: 100%;
-                    height: 100%;
-                    font-size: 5vw;
-                    overflow-y: hidden;
-                    overflow-x: hidden;
-                }
-
+            @media (max-aspect-ratio: 4/3){
                 .foreground {
-                    display: flex;
                     flex-direction: column;
                 }
 
-                .leftPanel {
-                    margin: 0;
-                    padding-top: 32px;
-                    width: 83vw;
-                    height: 64%;
-                    align-items: center;
+                .webHead{
+                    font-size: 6vh;
                 }
 
-                .webHead {
-                    font-size: 12vw;
-                }
-
-                .sectionHome {
-                    width: 100%;
-                    margin: 0;
-                }
-
-                .sectionMods {
-                    width: 100%;
-                    margin: 0;
-                }
-
-                .navigation-home {
-                    margin: 0;
-                    margin-left: 16px;
-                    padding: 4%;
-                    width: 100%;
-                    height: 0%;
-                    margin-bottom: 32vh;
-                    flex-direction: row;
-                    justify-content: center;
-                    flex-wrap: wrap;
-                    
-                }
-                
-                .navigation-modifications {
-                    margin: 0;
-                    padding: 8%;
-                    width: 100%;
-                    height: 100%;
-                    margin-bottom: 32vh;
-                    flex-direction: column-reverse;
-                    justify-content: start;
-                    align-items: center;
-                    flex-wrap:nowrap;
-                }
-
-                .modDescriptionContainer {
-                    margin: 0;
-                    padding: 16px;
-                    width: 100%;
-                    height: var(--buttonContainerHeightPor);
-                    flex-direction: row;
-                    justify-content: center;
-                }
-
-                #modDetails {
-                    display: none !important;
-                }
-
-                .modListContainer {
-                    height: calc(29% - 50vw);
-                }
-
-                .modItem {
-                    font-size: calc(23px - 0.1vw);
-                    padding-top: 3vw;
-                    padding-bottom: 3vw;
-                }
-
-                .scrollBoxHori {
-                    backdrop-filter: none;
-                    backdrop-filter: brightness(1.5)
-                        url(#displacementFilter)
-                        blur(4px);
-                    -webkit-backdrop-filter: blur(4px);
-                }
-
-                .scrollBoxVert {
-                    font-size: 16px;
-                    height: 83%;
-                    backdrop-filter: var(--glass-filter);
-                    -webkit-backdrop-filter: blur(4px);
-                }
-
-                .buttonContainer {
-                    position: relative;
-                    width: var(--buttonContainerWidthPor );
-                    height: var(--buttonContainerHeightPor);
-                    margin: 0;
-                    margin-bottom: 18px;
-                    margin-right: 16px;
-                }
-
-                .buttonContents {
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
+                .webHead{
                     text-align: center;
-                    top: calc((var(--button-imgHeight) * 0.5) - (var(--buttonContainerHeightPor) * 0.5) - 37px);
                 }
 
-                .buttonText {
-                    display: none;
-                }
-
-                .buttonImg {
-                    visibility: visible;
-                }
-
-                .bgOverlay {
-                    background-image: linear-gradient(180deg, rgb(255, 255, 255, 0), #000000aa);
+                #mods{
+                    flex-direction: column-reverse;
                 }
             }
         </style>
-    </head>
-
-    <svg style="display:none;">
-        <filter id="displacementFilter">
-            <feOffset in="SourceGraphic" dx="3" dy="2" result="offsetBG"/>
-            <feImage href="img/filters/liquidGlass.svg" preserveAspectRatio="none" result="displacementMap"/>
-            <feDisplacementMap in="offsetBG" in2="displacementMap" scale="500" xChannelSelector="R" yChannelSelector="G" />
-        </filter>
-    </svg>
-
-    <body>
-        <video autoplay loop playsinline muted id="backgroundVideo">
-            <source src="vid/halfLifeBGV.webm" type="video/webm">
-            Your browser does not support HTML5 video.
-        </video>
 
         <div class="bgOverlay"></div>
 
@@ -506,283 +191,48 @@
             <div class="leftPanel">
                 <ul class="leftPanelContents">
                     <li class="webHead" id="webHead"> <!--no head? °^°-->
-                        <p>
-                            Cirque Alvis
-                        </p>
+                        <p>Cirque Alvis</p>
                     </li>
                 </ul>
             </div>
 
-            <!--Contents-->
-            <section class="sectionHome" id="home">
-                <ul class="navigation-home">
-                    <li class="buttonContainer">
-                        <a class="buttonLink" href="https://twitch.tv/cirquealvis">
-                            <div class="buttonContents">
-                                <img src="img/twitch.png" class="buttonImg">
-                                <p class="buttonText">Twitch</p>
-                            </div>
-                            <div class="buttonHighlight"></div>
-                        </a>
-                    </li>
-                    
-                    <li class="buttonContainer">
-                        <a class="buttonLink" href="https://youtube.com/cirquealvis">
-                            <div class="buttonContents">
-                                <img src="img/youtube.png" class="buttonImg">
-                                <p class="buttonText">YouTube</p>
-                            </div>
-                            <div class="buttonHighlight"></div>
-                        </a>
-                    </li>
-                    
-                    <li class="buttonContainer">
-                        <a class="buttonLink" href="https://x.com/cirquealvis">
-                            <div class="buttonContents">
-                                <img src="img/twitter.png" class="buttonImg">
-                                <p class="buttonText">Twitter</p>
-                            </div>
-                            <div class="buttonHighlight"></div>
-                        </a>
-                    </li>
-    
-                    <li class="buttonContainer">
-                        <a class="buttonLink" href="https://steamcommunity.com/id/cirquealvis/">
-                            <div class="buttonContents">
-                                <img src="img/steam.png" class="buttonImg">
-                                <p class="buttonText">Steam</p>
-                            </div>
-                            <div class="buttonHighlight"></div>
-                        </a>
-                    </li>
-    
-                    <li class="buttonContainer">
-                        <a class="buttonLink" href="#modifications">
-                            <div class="buttonContents">
-                                <img src="img/modrinth.png" class="buttonImg">
-                                <p class="buttonText">Mods Used</p>
-                            </div>
-                            <div class="buttonHighlight"></div>
-                        </a>
-                    </li>
-                </ul>
-            </section>
+        <body>
+            <div class="rightPanel">
+                <div class="page" id="home">
+                        <button class="button" onclick="window.open('https://twitch.tv/cirquealvis')">Twitch</button>
+                        <button class="button" onclick="window.open('https://youtube.com/cirquealvis')">YouTube</button>
+                        <button class="button" onclick="window.open('https://x.com/cirquealvis')">Twitter</button>
+                        <button class="button" onclick="window.open('https://steamcommunity.com/id/cirquealvis/')">Steam</button>
+                        <!-- <button class="button" onclick="location.href='#mods'">Mods Used</button>-->
+                </div>
 
-            <section class="sectionMods" id="modifications">
-                <ul class="navigation-modifications">
-                    <div class="modDescriptionContainer">
-                        <li class="buttonContainer">
-                            <a class="buttonLink" href="#home">
-                                <div class="buttonContents">
-                                    <img src="img/home.png" class="buttonImg">
-                                    <p class="buttonText">Home</p>
-                                </div>
-                                <div class="buttonHighlight"></div>
-                            </a>
-                        </li>
-
-                        <div class="modDetailsContainer" id="modDetails">
-                            <div class="modDescriptionHeader">
-                                <img class="modImg" src="">
-                                <p class="modTitle"></p>
-                                <p class="modCreator"></p>
-                            </div>
-    
-                            <div class="modDescription">
-                                <p class="modDescriptionText">
-                                    
-                                </p>
-                                <!--<div class="modDependencies">
-                                    <p>
-                                        Dependencies:
-                                    </p>
-    
-                                    <ul class="dependenciesList">
-                                        <li><a class="modLib" id="modLink" dataSite="modrinth" dataMod="">Dependency 1</a></li>
-                                    </ul>
-                                </div>-->
-
-                                <div class="modURL"><ul><li><a class="modDownload" id="modLink">Download ▼</a></li></ul></div>
-                            </div>
-                        </div>
+                <div class="page" id="mods">
+                    <button class="button" id="homeButton" onclick="location.href='#home'">Home</button>
+                    <div class="list" id="gameList">
+                        <button class="button" id="tabs">Minecraft</button>
+                        <button class="button" id="tabs">Garry's Mod</button>
+                        <button class="button" id="tabs">Minecraft</button>
+                        <button class="button" id="tabs">Garry's Mod</button>
+                        <button class="button" id="tabs">Minecraft</button>
+                        <button class="button" id="tabs">Garry's Mod</button>
+                        <button class="button" id="tabs">Minecraft</button>
+                        <button class="button" id="tabs">Garry's Mod</button>
                     </div>
-                    <div class="modListContainer">
-                        <!--<div class="scrollBoxHori">
-                            <ul>
-                            </ul>
-                        </div>-->
-
-                        <div class="scrollBoxVert">
-                            <ul class="modList">
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="better-falling-block-particles">Better Falling Block Particles</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="big-globe">Big Globe</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="cave-dust">Cave Dust</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="chunks-fade-in">Chunks Fade In</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="client-tweaks">Client Tweaks</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="distanthorizons">Distant Horizons</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="entity-model-features">Entity Model Features</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="entitytexturefeatures">Entity Texture Features</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="entityculling">Entity Culling</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="fallingleaves">Falling Leaves</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="head-in-the-clouds">Head In The Clouds</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="item-highlighter">Highlighter</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="immersivethunder">Immersive Thunder</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="immersive-ui">Immersive UI</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="indium">Indium</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="iris">Iris</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="lithosphere">Lithosphere</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="make_bubbles_pop">Make Bubbles Pop</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="modmenu">Mod Menu</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="moreculling">More Culling</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="noisium">Noisium</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="particle-core">Particle Core</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="particle-effects">Particle Effects</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="particle-rain">Particle Rain</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="particle-tweaks">Particle Tweaks</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="particle-unlimit">Particle Unlimit</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="particular">Particular</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="polytone">Polytone</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="presence-footsteps">Presence Footsteps</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="3dskinlayers">Skin Layers 3D</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="sodium">Sodium</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="sound-physics-remastered">Sound Physics Remastered</a></li>
-                                <li><a class="modItem" id="modLink" dataSite="modrinth" dataMod="visuality">Visuality</a></li>
-                            </ul>
-                        </div>
+                    <div class="list" id="modList">
+                        <button class="button">Test</button>
+                        <button class="button">Test</button>
                     </div>
-                </ul>
-            </section>
-        </div>
+                </div>
+            </div>
+        </body>
 
         <script>
-            document.addEventListener("DOMContentLoaded", function(){
-                function upateAnchoredText(){
-                    const title = document.getElementById("webTitle");
-                    const header = document.getElementById("webHead");
-                    const hash = window.location.hash;
-
-                    if(hash === "#home"){
-                        title.textContent = "CQAS – Home"
-                        header.textContent = "Cirque Alvis";
-                    } else if (hash === "#modifications"){
-                        title.textContent = "CQAS – Mods Used"
-                        header.textContent = "Mods Used in Minecraft";
-                    } else if (hash === "#modifications#obs-studio"){
-                        title.textContent = "CQAS - OBS Plugins"
-                        header.textContent = "Plugins Used in OBS"
-                    }
-                }
-
-                window.addEventListener("hashchange", upateAnchoredText);
-                window.addEventListener("load", upateAnchoredText);
-            });
-
-            const sections = [...document.querySelectorAll('section')];
-            let active = null;
-
-            function fadeIn(sec){
-                sec.style.display = 'flex';
-                sec.classList.remove('show');
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        sec.classList.add('show')
-                    });
+            onhashchange = onload = () => {
+                const targetId = location.hash || '#home';
+                document.querySelectorAll('.page').forEach(el => {
+                el.style.display = (el.id === targetId.slice(1)) ? 'flex' : 'none';
                 });
-                active = sec;
             }
-
-            function switchTo(hash){
-                const next = sections.find(s => '#'+s.id === hash) || sections[0];
-                if (next === active) return;
-                if (active){
-                    active.classList.remove('show');
-                    active.addEventListener('transitionend', function te(e){
-                        if (e.propertyName !== 'opacity') return;
-                        active.style.display = 'none';
-                        active.removeEventListener('transitionend', te);
-
-                        fadeIn(next);
-                    });
-                } else {
-                    fadeIn(next);
-                }
-            }
-
-            window.addEventListener('hashchange', () => switchTo(location.hash));
-            window.addEventListener('load', () => switchTo(location.hash || '#home'));
-
-            function updateVideoPlayback(){
-                const isMobile = window.innerWidth <= 860;
-                const video = document.getElementById("backgroundVideo");
-
-                if (isMobile){
-                    video.removeAttribute("autoplay");
-                    video.pause();
-                } else {
-                    video.setAttribute("autoplay", "");
-                    video.play();
-                }
-            };
-
-            window.addEventListener("DOMContentLoaded", updateVideoPlayback);
-            window.addEventListener("resize", updateVideoPlayback);
-
-            const apiURLs = {
-                modrinth: "https://api.modrinth.com/v2/project/",
-                steam: "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/"
-            }
-            
-            const frontURLs = {
-                modrinth: "https://modrinth.com/mod/",
-                steam: "https://steamcommunity.com/sharedfiles/filedetails/?id="
-            };
-            
-            document.querySelectorAll('.modItem').forEach(link => {
-                const siteName = link.getAttribute('dataSite');
-                const modName = link.getAttribute('dataMod');
-                const modPageURL = frontURLs[siteName] ? frontURLs[siteName] + modName : null;
-
-                link.addEventListener('click', async () =>{
-                    const isMobile = window.innerWidth <= 860;
-                    
-                    if (isMobile){
-                        window.open(modPageURL, '_blank');
-
-                    } else {
-                        const modImg = document.querySelector('.modImg');
-                        const modTitle = document.querySelector('.modTitle');
-                        const modCreator = document.querySelector('.modCreator');
-                        const modDescriptionText = document.querySelector('.modDescriptionText');
-                        const modDownload = document.querySelector('.modDownload');
-                        const detailsSection = document.getElementById('modDetails');
-                        if (detailsSection && !detailsSection.dataset.visible){
-                            detailsSection.style.display = 'block';
-                            detailsSection.dataset.visible = 'true';
-                        } 
-
-                        try {
-                            let data;
-
-                            if (siteName === "modrinth"){
-                                const response = await fetch(`${apiURLs.modrinth}${modName}`);
-                                data = await response.json();
-
-                                if (data && modImg) modImg.src = data.icon_url;
-                                if (data && modTitle) modTitle.textContent = data.title;
-                                if (data && modCreator) modCreator.textContent = data.Creator;
-                                if (data && modDescriptionText) modDescriptionText.textContent = data.description;
-                                if (data && modDownload){
-                                    modDownload.href = frontURLs[siteName] + data.slug;
-                                    modDownload.target = "_blank";
-                                } 
-
-                                console.log(`Fetched Modrinth details: ${data.title}`);
-                            }   
-                        } catch (err) {
-                            console.error("Error fetching mod details:", err);
-                        }
-                    }
-                })
-            });
         </script>
-    </body>
+
+    </html>
