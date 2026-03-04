@@ -41,28 +41,32 @@
                 --glass-innerSpec-color: #ffffffff;
                 --glass-outerSpec-color: #ffffff33;
                 --glass-specular-shadow: inset 0.125vw 0.125vh 0.25vw var(--glass-innerSpec-color), inset 0 0 64px var(--glass-outerSpec-color);
-                --glass-button-color: linear-gradient(0deg, #faf0d094 8%,#121c2094 40%, #121c2094 55%, #ffffffbb 93%);
-                --glass-button-borderRadius: 6px;
+                --glass-color: linear-gradient(0deg, #faf0d094 8%,#121c2094 40%, #121c2094 55%, #ffffffbb 93%);
+                --glass-borderRadius: 6px;
                 --glass-panel-color: #7ac8ff21;
-                --glass-filter: brightness(1.3) blur(0.25vh) saturate(125%);
+                --glass-filter: brightness(1.25) blur(0.25vh) saturate(125%);
             }
 
             body{
                 margin: 0;
                 width: 100vw;
                 height: 100vh;
-                overflow: hidden;
                 position: absolute;
                 user-select: none;
 
                 color: white;
                 text-shadow: var(--neumorphic-shadow);
+            }
+
+            .bg-overlay{
+                position: fixed;
+                width: 100%;
+                height: 100%;
                 background-image: url(img/placeholderBG.png);
                 background-size: cover;
                 background-repeat: no-repeat;
-                background-attachment: fixed;
                 background-position: center;
-                background-blend-mode: hard-light;
+                z-index: -1;
             }
 
             ul{
@@ -71,6 +75,7 @@
             }
 
             .foreground {
+                position: relative;
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
@@ -81,22 +86,22 @@
                 text-align: center;
             }
 
-            .leftPanel{
+            .master-leftpanel{
+                display: inherit;
+                justify-content: end;
                 width: 100%;
             }
 
-            .leftPanelContents{
+            .master-leftpanelcontents{
                 width: 100%;
             }
             
-            .webHead{
-                text-align: end;
+            .web-header{
                 font-family: var(--header-font);
                 font-size: 8vh;
-                
             }
 
-            .rightPanel{
+            .master-rightpanel{
                 display: inherit;
                 flex-direction: inherit;
                 justify-content: inherit;
@@ -106,6 +111,13 @@
             }
 
             .page{
+                flex-direction: row;
+                justify-content: inherit;
+                align-items: inherit;
+            }
+
+            .slave-panel{
+                display: inherit;
                 flex-direction: column;
             }
 
@@ -126,6 +138,12 @@
                 all: unset;
                 display: flex;
                 flex-direction: column;
+
+                background: var(--glass-color);
+                box-shadow: var(--glass-specular-shadow);
+                border-radius: var(--glass-borderRadius);
+                backdrop-filter: var(--glass-filter);
+                -webkit-backdrop-filter: var(--glass-filter);
             }
 
             .button{
@@ -136,9 +154,9 @@
                 padding: 0;
 
                 /* New Button Style */
-                background: var(--glass-button-color);
+                background: var(--glass-color);
                 box-shadow: var(--glass-specular-shadow);
-                border-radius: var(--glass-button-borderRadius);
+                border-radius: var(--glass-borderRadius);
                 backdrop-filter: var(--glass-filter);
                 -webkit-backdrop-filter: var(--glass-filter);
 
@@ -150,11 +168,15 @@
             }
 
             #tabs{
-                width: 20vh;
+                margin: 0;
+                padding: 0;
+                margin-left: 0.25vh;
+                margin-right: 0.25vh;
+                width: 12vh;
                 height: 6vh;
             }
 
-            #homeButton{
+            #home-button{
                 width: 20vh;
             }
 
@@ -167,16 +189,20 @@
             }
 
             @media (max-aspect-ratio: 4/3){
+                body{
+                    height: 85vh;
+                }
+
                 .foreground {
                     flex-direction: column;
                 }
 
-                .webHead{
-                    font-size: 6vh;
+                .master-leftpanel{
+                    justify-content: inherit;
                 }
 
-                .webHead{
-                    text-align: center;
+                .web-header{
+                    font-size: 6vh;
                 }
 
                 #mods{
@@ -185,42 +211,46 @@
             }
         </style>
 
-        <div class="bgOverlay"></div>
+        <div class="bg-overlay"></div>
 
         <div class="foreground">
-            <div class="leftPanel">
-                <ul class="leftPanelContents">
-                    <li class="webHead" id="webHead"> <!--no head? °^°-->
-                        <p>Cirque Alvis</p>
+            <div class="master-leftpanel">
+                <ul class="master-panelcontents">
+                    <li class="web-header" id="web-header"> <!--no head? °^°-->
+                        <p class="header-text" id="home">Cirque Alvis</p>
+                        <p class="header-text" id="mods">Mods Used</p>
                     </li>
                 </ul>
             </div>
 
         <body>
-            <div class="rightPanel">
+            <div class="master-rightpanel">
                 <div class="page" id="home">
+                    <div class="slave-panel">
                         <button class="button" onclick="window.open('https://twitch.tv/cirquealvis')">Twitch</button>
                         <button class="button" onclick="window.open('https://youtube.com/cirquealvis')">YouTube</button>
                         <button class="button" onclick="window.open('https://x.com/cirquealvis')">Twitter</button>
                         <button class="button" onclick="window.open('https://steamcommunity.com/id/cirquealvis/')">Steam</button>
-                        <!-- <button class="button" onclick="location.href='#mods'">Mods Used</button>-->
+                        <!--<button class="button" onclick="location.href='#mods'">Mods Used</button>-->
+                    </div>
                 </div>
 
                 <div class="page" id="mods">
-                    <button class="button" id="homeButton" onclick="location.href='#home'">Home</button>
-                    <div class="list" id="gameList">
-                        <button class="button" id="tabs">Minecraft</button>
-                        <button class="button" id="tabs">Garry's Mod</button>
-                        <button class="button" id="tabs">Minecraft</button>
-                        <button class="button" id="tabs">Garry's Mod</button>
-                        <button class="button" id="tabs">Minecraft</button>
-                        <button class="button" id="tabs">Garry's Mod</button>
-                        <button class="button" id="tabs">Minecraft</button>
-                        <button class="button" id="tabs">Garry's Mod</button>
-                    </div>
-                    <div class="list" id="modList">
-                        <button class="button">Test</button>
-                        <button class="button">Test</button>
+                    <button class="button" id="home-button" onclick="location.href='#home'">Home</button>
+                    <div class="slave-panel" id="mods">
+                        <div class="list" id="gameList">
+                            <button class="button" id="tabs" onclick="location.href='#mods'">MC</button>
+                            <button class="button" id="tabs">Gm</button>
+                            <button class="button" id="tabs">L4D2</button>
+                        </div>
+                        <div class="list" id="modList">
+                            <a>test</a>
+                            <a>test</a>
+                            <a>test</a>
+                            <a>test</a>
+                            <a>test</a>
+                            <a>test</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -229,9 +259,7 @@
         <script>
             onhashchange = onload = () => {
                 const targetId = location.hash || '#home';
-                document.querySelectorAll('.page').forEach(el => {
-                el.style.display = (el.id === targetId.slice(1)) ? 'flex' : 'none';
-                });
+                document.querySelectorAll('.page, .header-text').forEach(el => {el.style.display = (el.id === targetId.slice(1)) ? 'flex' : 'none';});
             }
         </script>
 
